@@ -1,0 +1,2 @@
+# scoreboard
+Programming competition scoreboard.
