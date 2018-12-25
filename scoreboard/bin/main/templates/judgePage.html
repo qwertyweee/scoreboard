@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>JudgePage</title>
+		<meta charset="utf-8">		  
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+		
+	</head>
+	
+	<body>		
+		<nav class="navbar navbar-light" style="background-color: #C82249;">				  	
+		  		<p class="mx-auto font-weight-bold text-light">Pogramming Competition Scoreboard</p>
+		</nav>
+				
+		<div class="text-center p-2">	
+			<h1 th:text="${judges.name}">...</h1>
+			<p>
+				<a href="/regteam"><button type="button"  class="btn">Register Team</button></a>
+				<a href="/delteam"><button type="button"  class="btn">Delete Team</button></a>
+		</div>
+		
+		<table class="table">			   
+			      <thead class="thead-dark">
+				    <tr>
+				      <th scope="col">Team ID</th>
+				      <th scope="col">Team Name</th>
+				      <th scope="col">Queation 1</th>
+				      <th scope="col">Queation 2</th>
+				      <th scope="col">Queation 3</th>
+				      <th scope="col">Queation 4</th>
+				      <th scope="col">Queation 5</th>
+				      <th scope="col">Queation 6</th>
+				    </tr>
+				  </thead>
+				  
+			      <tbody th:each="team : ${teams}">
+				    <tr>
+				      <th scope="row" th:text="${team.teamId}">num</th>
+				      <td th:text="${team.teamName}">...</td>
+				      <td th:text="${team.q1}">...</td>
+				      <td th:text="${team.q2}">...</td>
+				      <td th:text="${team.q3}">...</td>
+				      <td th:text="${team.q4}">...</td>
+				      <td th:text="${team.q5}">...</td>
+				      <td th:text="${team.q6}">...</td>
+				    </tr>
+			      </tbody>			   
+			</table>
+			
+			<div class="container">
+			<div class="row">
+			<div class ="col"></div>
+			<div class ="col p-3">
+				<form action="#" th:action="@{/update}" th:object="${team}" method="post">
+				
+		    		<p>Id: <input type="text" class="form-control mb-2 mr-sm-2" th:field="*{teamId}" placeholder="ENTER CORRECT TEAM ID" ></p>
+		      		<p>Status: <input type="text" class="form-control mb-2 mr-sm-2" th:field="*{comment}" placeholder="Eg. Correct, Rejected" ></p>
+		      		
+		      		<label class="radio-inline"><input type="radio" name="optradio" th:field="*{question}" th:value="${1}">Question 1</label>
+					<label class="radio-inline"><input type="radio" name="optradio" th:field="*{question}" th:value="${2}">Question 2</label>
+					<label class="radio-inline"><input type="radio" name="optradio" th:field="*{question}" th:value="${3}">Question 3</label>
+					<label class="radio-inline"><input type="radio" name="optradio" th:field="*{question}" th:value="${4}">Question 4</label>
+					<label class="radio-inline"><input type="radio" name="optradio" th:field="*{question}" th:value="${5}">Question 5</label>
+  					<label class="radio-inline"><input type="radio" name="optradio" th:field="*{question}" th:value="${6}">Question 6</label>
+  					
+		        	<p>
+		        	<input class="btn" type="submit" value="Submit" /> 
+		        	</p>
+	    		</form>
+	    	</div>
+	    	<div class ="col"></div>
+	    	</div>
+	        </div>
+			
+	</body>
+</html>
